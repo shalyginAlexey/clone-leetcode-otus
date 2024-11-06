@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: LeetCode Clone API
+  version: 1.0.0
+paths:
+  /register:
+    post:
+      summary: Register a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: User registered
+  /login:
+    post:
+      summary: Login a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Login"
+      responses:
+        "200":
+          description: User logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /logout:
+    post:
+      summary: Logout a user
+      responses:
+        "200":
+          description: User logged out
+  /tasks:
+    get:
+      summary: Get all tasks
+      responses:
+        "200":
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+    post:
+      summary: Create a new task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+      responses:
+        "201":
+          description: Task created
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        rating:
+          type: integer
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        examples:
+          type: array
+          items:
+            type: object
+            properties:
+              input:
+                type: string
+              output:
+                type: string
+        additional_materials:
+          type: array
+          items:
+            type: string
+        rating:
+          type: integer
+    Comment:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        task_id:
+          type: integer
+        content:
+          type: string
+        created_at:
+          type: string
+          format: date-time
