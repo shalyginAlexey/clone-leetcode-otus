@@ -1,0 +1,27 @@
+.home {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home h1 {
+  margin-bottom: 2rem;
+}
+
+.home nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.home nav ul li {
+  margin: 1rem 0;
+}
+
+.home nav ul li a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.home nav ul li a:hover {
+  text-decoration: underline;
+}
